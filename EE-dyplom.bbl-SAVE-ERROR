@@ -1,0 +1,502 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{stack_survey_2024}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://survey.stackoverflow.co/2024/technology}{<https://survey.stackoverflow.co/2024/technology>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{2024 Developer Survey}
+    \endentry
+    \entry{who}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=dfea7f04e1c1a25a5d712303a0ad9807}{%
+           family={{Biuro Regionalne WHO na Europę}},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \strng{fullhash}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \strng{fullhashraw}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \strng{bibnamehash}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \strng{authorbibnamehash}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \strng{authornamehash}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \strng{authorfullhash}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \strng{authorfullhashraw}{dfea7f04e1c1a25a5d712303a0ad9807}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://www.who.int/poland/pl/publications/9789240014886}{<https://www.who.int/poland/pl/publications/9789240014886>}}
+      \field{note}{data dostępu: 22.01.2025}
+      \field{title}{Wytyczne WHO dotyczące aktywności fizycznej i siedzącego trybu życia: omówienie}
+      \field{year}{2021}
+    \endentry
+    \entry{ieee_top_languages_2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=fee5071af0f142724fb6d3a7843bb41a}{%
+           family={Cass},
+           familyi={C\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{fullhash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{fullhashraw}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{bibnamehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authorbibnamehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authornamehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authorfullhash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authorfullhashraw}{fee5071af0f142724fb6d3a7843bb41a}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://spectrum.ieee.org/top-programming-languages-2024}{<https://spectrum.ieee.org/top-programming-languages-2024>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{The Top Programming Languages 2024}
+    \endentry
+    \entry{ieee_top_languages_methodology_2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=fee5071af0f142724fb6d3a7843bb41a}{%
+           family={Cass},
+           familyi={C\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{fullhash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{fullhashraw}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{bibnamehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authorbibnamehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authornamehash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authorfullhash}{fee5071af0f142724fb6d3a7843bb41a}
+      \strng{authorfullhashraw}{fee5071af0f142724fb6d3a7843bb41a}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://spectrum.ieee.org/top-programming-languages-methodology-2024}{<https://spectrum.ieee.org/top-programming-languages-methodology-2024>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Top Programming Languages Methodology 2024}
+    \endentry
+    \entry{atomichabits}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=40fe61679866a0db9669c5b26601f5b0}{%
+           family={Clear},
+           familyi={C\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cornerstone Press}%
+      }
+      \strng{namehash}{40fe61679866a0db9669c5b26601f5b0}
+      \strng{fullhash}{40fe61679866a0db9669c5b26601f5b0}
+      \strng{fullhashraw}{40fe61679866a0db9669c5b26601f5b0}
+      \strng{bibnamehash}{40fe61679866a0db9669c5b26601f5b0}
+      \strng{authorbibnamehash}{40fe61679866a0db9669c5b26601f5b0}
+      \strng{authornamehash}{40fe61679866a0db9669c5b26601f5b0}
+      \strng{authorfullhash}{40fe61679866a0db9669c5b26601f5b0}
+      \strng{authorfullhashraw}{40fe61679866a0db9669c5b26601f5b0}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781847941831}
+      \field{title}{Atomic Habits}
+      \field{year}{2022}
+    \endentry
+    \entry{def_spa_react}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://legacy.reactjs.org/docs/glossary.html\#single-page-application}{<https://legacy.reactjs.org/docs/glossary.html\#single-page-application>}}
+      \field{note}{data dostępu: 24.01.2025}
+      \field{title}{Definicja Single Page Application według dokumentacji React}
+    \endentry
+    \entry{axios}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://axios-http.com/docs/intro}{<https://axios-http.com/docs/intro>}}
+      \field{note}{data dostępu: 22.01.2025}
+      \field{title}{Dokumentacja Axios}
+    \endentry
+    \entry{django}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://www.djangoproject.com/}{<https://www.djangoproject.com/>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Dokumentacja Django}
+    \endentry
+    \entry{docker}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://www.docker.com/}{<https://www.docker.com/>}}
+      \field{note}{data dostępu: 15.01.2025}
+      \field{title}{Dokumentacja Docker}
+    \endentry
+    \entry{dockercompose}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://docs.docker.com/compose/}{<https://docs.docker.com/compose/>}}
+      \field{note}{data dostępu: 15.01.2025}
+      \field{title}{Dokumentacja Docker Compose}
+    \endentry
+    \entry{fastapi}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://fastapi.tiangolo.com/}{<https://fastapi.tiangolo.com/>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Dokumentacja FastAPI}
+    \endentry
+    \entry{flask_docs}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://flask.palletsprojects.com/}{<https://flask.palletsprojects.com/>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Dokumentacja Flask}
+    \endentry
+    \entry{postgres}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://www.postgresql.org/}{<https://www.postgresql.org/>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Dokumentacja PostgreSQL}
+    \endentry
+    \entry{pytest}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://docs.pytest.org/en/stable/}{<https://docs.pytest.org/en/stable/>}}
+      \field{note}{data dostępu: 22.01.2025}
+      \field{title}{Dokumentacja pytest}
+    \endentry
+    \entry{react}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://react.dev/}{<https://react.dev/>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Dokumentacja React.js}
+    \endentry
+    \entry{shadcnui}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://ui.shadcn.com/docs}{<https://ui.shadcn.com/docs>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Dokumentacja shadcn/ui}
+    \endentry
+    \entry{sqlalchemy}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://www.sqlalchemy.org/}{<https://www.sqlalchemy.org/>}}
+      \field{note}{data dostępu: 15.01.2025}
+      \field{title}{Dokumentacja SQLAlchemy}
+    \endentry
+    \entry{tailwind}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://tailwindcss.com/}{<https://tailwindcss.com/>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{Dokumentacja TailwindCSS}
+    \endentry
+    \entry{vite}{misc}{}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://vite.dev/}{<https://vite.dev/>}}
+      \field{note}{data dostępu: 15.01.2025}
+      \field{title}{Dokumentacja Vite}
+    \endentry
+    \entry{freeman2019}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=3e85ff35ac9460aa6193899e6707ba4a}{%
+           family={Freeman},
+           familyi={F\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Apress}%
+      }
+      \strng{namehash}{3e85ff35ac9460aa6193899e6707ba4a}
+      \strng{fullhash}{3e85ff35ac9460aa6193899e6707ba4a}
+      \strng{fullhashraw}{3e85ff35ac9460aa6193899e6707ba4a}
+      \strng{bibnamehash}{3e85ff35ac9460aa6193899e6707ba4a}
+      \strng{authorbibnamehash}{3e85ff35ac9460aa6193899e6707ba4a}
+      \strng{authornamehash}{3e85ff35ac9460aa6193899e6707ba4a}
+      \strng{authorfullhash}{3e85ff35ac9460aa6193899e6707ba4a}
+      \strng{authorfullhashraw}{3e85ff35ac9460aa6193899e6707ba4a}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-1-4842-4979-6}
+      \field{title}{Essential TypeScript: From Beginner To Pro}
+      \field{year}{2019}
+    \endentry
+    \entry{atomic_design}{unpublished}{}{}
+      \name{author}{1}{}{%
+        {{hash=689a1fbcd0c358d7a4a4b35ccbbb28c9}{%
+           family={Frost},
+           familyi={F\bibinitperiod},
+           given={Brad},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \strng{fullhash}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \strng{fullhashraw}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \strng{bibnamehash}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \strng{authorbibnamehash}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \strng{authornamehash}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \strng{authorfullhash}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \strng{authorfullhashraw}{689a1fbcd0c358d7a4a4b35ccbbb28c9}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{data dostępu: 20.01.2025}
+      \field{title}{Atomic Design}
+    \endentry
+    \entry{flask_grinberg}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=eeba7ae00fae9a99a709f6f40abb3917}{%
+           family={Grinberg},
+           familyi={G\bibinitperiod},
+           given={Miguel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Helion}%
+      }
+      \strng{namehash}{eeba7ae00fae9a99a709f6f40abb3917}
+      \strng{fullhash}{eeba7ae00fae9a99a709f6f40abb3917}
+      \strng{fullhashraw}{eeba7ae00fae9a99a709f6f40abb3917}
+      \strng{bibnamehash}{eeba7ae00fae9a99a709f6f40abb3917}
+      \strng{authorbibnamehash}{eeba7ae00fae9a99a709f6f40abb3917}
+      \strng{authornamehash}{eeba7ae00fae9a99a709f6f40abb3917}
+      \strng{authorfullhash}{eeba7ae00fae9a99a709f6f40abb3917}
+      \strng{authorfullhashraw}{eeba7ae00fae9a99a709f6f40abb3917}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-83-283-6384-7}
+      \field{title}{Flask. Tworzenie aplikacji internetowych w Pythonie. Wydanie II}
+      \field{year}{2020}
+    \endentry
+    \entry{tiobe_index_2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=fb819fc2ee5a5322a718a25b704b5fcf}{%
+           family={Jansen},
+           familyi={J\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \strng{fullhash}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \strng{fullhashraw}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \strng{bibnamehash}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \strng{authorbibnamehash}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \strng{authornamehash}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \strng{authorfullhash}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \strng{authorfullhashraw}{fb819fc2ee5a5322a718a25b704b5fcf}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://www.tiobe.com/tiobe-index/}{<https://www.tiobe.com/tiobe-index/>}}
+      \field{note}{data dostępu: 14.01.2025}
+      \field{title}{TIOBE Index for January 2025}
+    \endentry
+    \entry{jwt}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=5a25bc91f524ca6dfc2ecf9f4a13903c}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=81e40ae87af997090fa9a9696e364c65}{%
+           family={Bradley},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=34e6848475fd66697bfcb80787f2aef0}{%
+           family={Sakimura},
+           familyi={S\bibinitperiod},
+           given={Nat},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{8c74f36d6695ec51f419b547a3316502}
+      \strng{fullhash}{48d544cafb60a3ced64569d686a33135}
+      \strng{fullhashraw}{48d544cafb60a3ced64569d686a33135}
+      \strng{bibnamehash}{48d544cafb60a3ced64569d686a33135}
+      \strng{authorbibnamehash}{48d544cafb60a3ced64569d686a33135}
+      \strng{authornamehash}{8c74f36d6695ec51f419b547a3316502}
+      \strng{authorfullhash}{48d544cafb60a3ced64569d686a33135}
+      \strng{authorfullhashraw}{48d544cafb60a3ced64569d686a33135}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://datatracker.ietf.org/doc/html/rfc7519}{<https://datatracker.ietf.org/doc/html/rfc7519>}}
+      \field{note}{data dostępu: 18.01.2025}
+      \field{title}{Dokument RFC 7519 stowarzyszenia IETF}
+    \endentry
+    \entry{rest_api}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=c614bfd2ff66253d4a676a6b12ae6bbe}{%
+           family={Massé},
+           familyi={M\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media}%
+      }
+      \strng{namehash}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \strng{fullhash}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \strng{fullhashraw}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \strng{bibnamehash}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \strng{authorbibnamehash}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \strng{authornamehash}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \strng{authorfullhash}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \strng{authorfullhashraw}{c614bfd2ff66253d4a676a6b12ae6bbe}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1-449-31050-9}
+      \field{title}{REST API Design Rulebook}
+      \field{year}{2012}
+    \endentry
+    \entry{reactcontextapi}{misc}{}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://react.dev/reference/react/createContext}{<https://react.dev/reference/react/createContext>}}
+      \field{note}{data dostępu: 22.01.2025}
+      \field{title}{Materiały dotyczące React Context API}
+    \endentry
+    \entry{reactusestate}{misc}{}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://react.dev/reference/react/useState}{<https://react.dev/reference/react/useState>}}
+      \field{note}{data dostępu: 22.01.2025}
+      \field{title}{Materiały dotyczące użycia useState w React}
+    \endentry
+    \entry{owasp_cheatsheet}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=24b95a7fdad5a850196cd87546dcc70b}{%
+           family={OWASP},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{fullhash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{fullhashraw}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{bibnamehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{authorbibnamehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{authornamehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{authorfullhash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{authorfullhashraw}{24b95a7fdad5a850196cd87546dcc70b}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://cheatsheetseries.owasp.org/cheatsheets/Password\_Storage\_Cheat\_Sheet.html}{<https://cheatsheetseries.owasp.org/cheatsheets/Password\_Storage\_Cheat\_Sheet.html>}}
+      \field{note}{data dostępu: 20.01.2025}
+      \field{title}{Password Storage Cheat Sheet}
+    \endentry
+    \entry{inz_oprogramowania}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=bca12ac0365d254e7c871d6c623c0db6}{%
+           family={Śmiałek},
+           familyi={Ś\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod}}}%
+        {{hash=94c2d43721c6d53f66c2063f8f0cfdd4}{%
+           family={Rybiński},
+           familyi={R\bibinitperiod},
+           given={Kamil},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Helion}%
+      }
+      \strng{namehash}{e7af56f0b14f4605af7de862d7691cac}
+      \strng{fullhash}{e7af56f0b14f4605af7de862d7691cac}
+      \strng{fullhashraw}{e7af56f0b14f4605af7de862d7691cac}
+      \strng{bibnamehash}{e7af56f0b14f4605af7de862d7691cac}
+      \strng{authorbibnamehash}{e7af56f0b14f4605af7de862d7691cac}
+      \strng{authornamehash}{e7af56f0b14f4605af7de862d7691cac}
+      \strng{authorfullhash}{e7af56f0b14f4605af7de862d7691cac}
+      \strng{authorfullhashraw}{e7af56f0b14f4605af7de862d7691cac}
+      \field{sortinit}{Ś}
+      \field{sortinithash}{fe7d139ff25af1da92945fcf3e00cef5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-83-289-0841-3}
+      \field{title}{Inżynieria oprogramowania w praktyce. Od wymagań do kodu z językiem UML}
+      \field{year}{2024}
+    \endentry
+    \entry{mobile_first}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=ec5019c09be82a8904485615239ef96f}{%
+           family={Wroblewski},
+           familyi={W\bibinitperiod},
+           given={Luke},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec5019c09be82a8904485615239ef96f}
+      \strng{fullhash}{ec5019c09be82a8904485615239ef96f}
+      \strng{fullhashraw}{ec5019c09be82a8904485615239ef96f}
+      \strng{bibnamehash}{ec5019c09be82a8904485615239ef96f}
+      \strng{authorbibnamehash}{ec5019c09be82a8904485615239ef96f}
+      \strng{authornamehash}{ec5019c09be82a8904485615239ef96f}
+      \strng{authorfullhash}{ec5019c09be82a8904485615239ef96f}
+      \strng{authorfullhashraw}{ec5019c09be82a8904485615239ef96f}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\href{https://mobile-first.abookapart.com/}{<https://mobile-first.abookapart.com/>}}
+      \field{note}{data dostępu: 20.01.2025}
+      \field{title}{Mobile First}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
