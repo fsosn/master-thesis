@@ -1,0 +1,16 @@
+\section{Zagrożenia}
+Wraz z rozwojem dużych modeli językowych pojawiają się ich nowe, groźne podatności. Udoskonalaniu mechanizmów bezpieczeństwa towarzyszy również rozwój coraz bardziej zaawansowanych metod ataku.
+Stanowi to istotne wyzwanie dla twórców systemów AI, którzy dążą do rozbudowy funkcjonalności modeli jednocześnie minimalizując ryzyko ich nadużycia.
+Potężne możliwości generowania tekstu przez duże modele językowe niesie ze sobą również zagrożenie takie jak tworzenie szkodliwych treści, zarówno w sposób nieintencjonalny jak i w wyniku przeprowadzonego ataku~\cite{zhang2025guardiansoffenderssurveyharmful}.
+Generowane w ten sposób niedozwolone odpowiedzi można uporządkować w cztery kategorie~\cite{zhang2025guardiansoffenderssurveyharmful}.
+Jedną z nich może być toksyczność obejmująca wulgaryzmy, wyzwiska czy uprzedzenia kulturowe. Drugą kategorią jest nękanie, którego celem jest zastraszanie czy kierowanie gróźb. Kolejną kategorią jest mowa nienawiści. Ostatnią kategorię tworzą treści obarczone uprzedzeniami, które skierowane są do osób o określonej rasie, płci, religii czy orientacji.
+Rozwój bezpieczeństwa dużych modeli językowych jest kluczowy, by niwelować możliwość generowania takich treści i dostarczania ich użytkownikom.
+
+Według organizacji OWASP najistotniejszym zagrożeniem dla takich systemów są ataki typu wstrzykiwanie poleceń~\cite{owasp_llm_top10}.
+Podatność ta występuje, gdy dane wejściowe przekazane przez użytkownika modyfikują zachowanie lub odpowiedź modelu w sposób nieprzewidziany przez twórców.
+Zagrożenia te można podzielić na dwie podgrupy. Pierwszą z nich są pośrednie ataki typu prompt injection, w których system przyjmuje dane wejściowe ze źródeł zewnętrznych, przykładowo z plików czy stron internetowych zawierających treść, która może wpłynąć na zachowanie modelu w sposób nieoczekiwany~\cite{owasp_llm_top10}.
+Tego typu ataki mogą prowadzić do zakłóceń prawidłowego działania modelu, blokowania funkcjonalności, skłonienia systemu do odbiegania od pożądanego zachowania na rzecz celów adwersarialnych czy wycieku prywatnych danych przetwarzanych przez LLM~\cite{nist_taxonomy_2025}.
+Obok ataków pośrednich, istotną podgrupą tych zagrożeń są również bezpośrednie ataki promptowe (ang. direct prompting attacks), które występują w scenariuszu, w którym atakujący jest głównym użytkownikiem systemu i wchodzi w interakcję z modelem poprzez interfejs zapytań~\cite{nist_taxonomy_2025}.
+Zagrożeniem wynikającym z takich ataków jest przede wszystkim obejście mechanizmów obronnych i zasad etycznych wbudowanych przez twórców modelu, przejęcie kontroli nad wywoływaniem zewnętrznych narzędzi, czy również wydobycie ukrytych informacji z kontekstu rozmowy, takich jak przykładowo instrukcja systemowa (ang. system prompt)~\cite{nist_taxonomy_2025}.
+Podklasą ataków bezpośrednich są ataki typu jailbreak, które koncentrują się na umożliwieniu nieuprawnionego użycia poprzez obejście wbudowanych w modelu mechanizmów odmowy, co ułatwia realizację kolejnych, bardziej złożonych ataków~\cite{correia2026systematicliteraturereviewllm}.
+W dalszej części pracy analizie poddano właśnie kategorię ataków bezpośrednich.
