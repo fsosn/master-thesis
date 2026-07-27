@@ -1,10 +1,17 @@
 \section{Metody bezpośrednich ataków promptowych}
 
 \subsection{Ataki oparte na optymalizacji}
-\subsubsection{GCG}
-\subsubsection{AutoDAN}
+Pierwszą analizowaną kategorią metod bezpośrednich ataków promptowych są ataki oparte na optymalizacji.
+Opierają się na sformułowaniu matematycznej funkcji celu i wykorzystaniu metod przeszukiwania do wyznaczenia ciągu wejściowego do modelu wymuszający pożądane zachowanie~\cite{nist_taxonomy_2025}. W szczególności używane są metody gradientowe. Funkcje celu są formułowane tak, by wymusić na modelu wygenerowanie początku odpowiedzi, który ukierukowany byłby na zgodę na wykonanie otrzymanego złośliwego polecenia~\cite{nist_taxonomy_2025}.
+Specjalną kategorią ataków opartych na gradientach są uniwersalne wyzwalacze adwersarialne (ang. universal adversarial triggers). Ich celem jest odnalezienie przedrostków lub przyrostków, które po dodaniu do promptu wejściowego doprowadzają do obejścia zabezpieczeń~\cite{nist_taxonomy_2025}. Ponadto, znalezione w ten sposób cząstki można wykorzystać w atakach na inne LLM. Czyni to modele otwartoźródłowe dogodnym środowiskiem do projektowania takich ataków.
+
+Przykładem techniki wykorzystywanej przy atakach opartych na optymalizacji jest algorytm \gls{GCG}~\cite{zou2023universaltransferableadversarialattacks}. Wykorzystuje on wagi modelu otwartoźródłowego. Rozwiązuje problem optymalizacji w dyskretnej przestrzeni tokenów poprzez połączenie technik opartych na gradientach i metod zachłannego przeszukiwania.
+Algorytm GCG wykorzystuje gradienty funkcji straty względem wektorowych reprezentacji tokenów, aby wytypować pulę najbardziej obiecujących zamienników. Następnie oceniany jest ich rzeczywisty wpływ za pomocą ewaluacji w przód, za każdym razem wybierając modyfikację maksymalizującą szansę na wygenerowanie przez model odpowiedzi wyrażającej aprobatę.
+Rezultatem jest wskazanie sufiksu, który może zostać dodany do szkodliwego promptu użytkownika. Autorzy w badaniach na własnym zbiorze wykazali, że zoptymalizowane w ten sposób ciągi tokenów cechują się wysoką skutecznością w przełamywaniu zabezpieczeń modeli otwartych. W scenariuszu generowania szkodliwych odpowiedzi na niedozwolone polecenia metoda osiągnęła wskaźnik sukcesu ataku na poziomie 99\% dla modelu Vicuna-7B~\cite{vicuna2023} oraz 88\% dla modelu Llama-2-7B-Chat~\cite{touvron2023llama2openfoundation}.
+Co więcej, na podstawie badań autorów, wygenerowane w taki sposób sufiksy wykazały wysoki poziom przenośności na inne modele zamknięte, gdzie również dzięki nim udało się złamać zabezpieczenia. Dowodzi to, że podatność na ten typ ataku jest powszechna wśród różnych rodzin dużych modeli językowych.
 
 \subsection{Metody manualne}
+Kolejną kategorią metod bezpośrednich ataków promptowych są
 \subsubsection{Konflikt celów}
 \subsubsection{Niedopasowanie generalizacji}
 
