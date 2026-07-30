@@ -11,8 +11,20 @@ Rezultatem jest wskazanie sufiksu, który może zostać dodany do szkodliwego pr
 Co więcej, na podstawie badań autorów, wygenerowane w taki sposób sufiksy wykazały wysoki poziom przenośności na inne modele zamknięte, gdzie również dzięki nim udało się złamać zabezpieczenia. Dowodzi to, że podatność na ten typ ataku jest powszechna wśród różnych rodzin dużych modeli językowych.
 
 \subsection{Metody manualne}
-Kolejną kategorią metod bezpośrednich ataków promptowych są
-\subsubsection{Konflikt celów}
-\subsubsection{Niedopasowanie generalizacji}
+Kolejną kategorią są manualne metody przeprowadzenia ataku typu jailbreak~\cite{nist_taxonomy_2025}. W ich skład wchodzą między innymi metody oparte o konflikt celów, które wykorzystują spór między chęcią modelu do wykonania polecenia użytkownika a koniecznością przestrzegania wbudowanych reguł bezpieczeństwa. Wśród takich podejść można wyróżnić między innymi wstrzykiwanie przedrostka, tłumienie odmowy, wstrzykiwanie stylu oraz odgrywanie ról~\cite{wei2023jailbrokendoesllmsafety}.
+Wstrzykiwanie przedrostka oparte jest wymuszeniu na modelu rozpoczęcia odpowiedzi od zgody na wykonanie zadania, co może zwiększyć prawdopodobieństwo na kontynuację odpowiedzi zgodnie ze złośliwą intencją użytkownika.
+Z kolei podejście mające na celu tłumienie odmowy oparte jest na zakazaniu modelowi stosowania zwrotów wskazujących na brak zgody wykonania zadania. Poprzez obniżenie prawdopodobieństwa wygenerowania formuły odmowy, zwiększona zostaje szansa na uzyskanie odpowiedzi na polecenie atakującego.
+Wstrzykiwanie stylu natomiast polega na narzuceniu ograniczeń na styl lub składnię wypowiedzi, co może utrudnić modelowi użycie standardowych formuł odmowy.
+Techniki oparte na odgrywaniu ról bazują na wprowadzeniu fikcyjnego kontekstu ma na celu skłonienie modelu do generowania treści, których odmówiłby w standardowym trybie działania, a przykładem może być podejście typu~\gls{DAN}~\cite{choi2025dan}.
 
-\subsection{Automatyczne testowanie adwersarialne oparte na modelach}
+Inną grupą metod manualnych są ataki oparte o niedopasowanie generalizacji~\cite{nist_taxonomy_2025}. Polegają na identyfikacji zapytań, które wykraczają poza rozkład danych użytych podczas treningu bezpieczeństwa modelu, ale znajdują się w obszarze jego ogólnych zdolności generatywnych~\cite{wei2023jailbrokendoesllmsafety}. Powoduje to ominięcie mechanizmów obronnych ze względu na nietypową formę treści polecenia.
+W ramach takich technik wyróżnić można strategie bazujące na kodowaniu treści prompta (np. base64), wykorzystaniu szyfru przesuwającego (np. ROT13), rozbijaniu złośliwej instrukcji na mniejsze, pozornie nieszkodliwe fragmenty (ang. payload splitting) czy tłumaczeniu polecenia na mało znane języki (np. Zulu)~\cite{wei2023jailbrokendoesllmsafety, yong2024lowresourcelanguagesjailbreakgpt4}.
+
+\subsection{Automatyczny red teaming oparty na modelach}
+Następną kategorią metod bezpośrednich ataków promptowych jest automatyczny red teaming oparty na modelach~\cite{nist_taxonomy_2025}. Red teaming polega na antagonistycznym testowaniu systemu w celu zidentyfikowania jego podatności. Technika tego ataku opiera się na wykorzystaniu trzech LLM, w skład których wchodzi model docelowy, atakujący oraz oceniający.
+W metodzie tej klasyfikator oceniający czy odpowiedź jest szkodliwa można potraktować jako funkcję nagrody do trenowania modelu do generowania szkodliwego polecenia, które może ominąć reguły bezpieczeństwa atakowanego innego modelu~\cite{nist_taxonomy_2025}.
+
+Jedną z takich metod jest algorytm \gls{PAIR}~\cite{chao2024jailbreakingblackboxlarge}. Jego celem jest automatyczne generowanie szkodliwych zapytań do modelu bez ingerencji człowieka czy dostępu do wag modelu docelowego. Jest również bardziej wydajny pod względem zapytań niż GCG, czego skutkiem jest szybsze znalezienie przełamania zabezpieczeń LLM.
+Model atakujący tworzy niebezpieczne zapytanie do modelu docelowego, którego odpowiedź kierowana jest do modelu oceniającego czy udało się ominąć mechanizmy obronne. W razie niepowodzenia w kolejnej iteracji model atakujący udoskonala zapytanie na podstawie konwersacji z modelem docelowym, uzyskanego wyniku i własnej analizy.
+Wyniki przedstawione przez autorów algorytmu wskazują na wysoką wydajność ataku. PAIR osiągnął skuteczność ataku na poziomie około 50\% dla modeli zamkniętych GPT-3.5-Turbo-1106 i GPT4-0125-preview oraz 73\% dla modelu Gemini-Pro. Dla modeli otwartych Vicuna-13Bv1.5 oraz Llama-2-7B-chat otrzymano odpowiednio 88\% i 4\%. Stanowi to wzrost skuteczności ataków w porównaniu do rezultatów otrzymanych dla metody GCG.
+Dodatkowo, do przeprowadzenia ataku metoda PAIR wymagała stanowczo mniej zapytań i wykazała wyższy poziom przenośności na inne modele.

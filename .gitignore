@@ -28,6 +28,10 @@
 *.snm
 *.vrb
 *.slo
+*.slg
+*.sls
+
+*.pdf
 
 *.latexmk
 
