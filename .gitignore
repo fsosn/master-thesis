@@ -31,8 +31,6 @@
 *.slg
 *.sls
 
-*.pdf
-
 *.latexmk
 
 _minted*
@@ -54,3 +52,4 @@ _minted*
 *~
 
 .vscode/
+EE-dyplom.pdf
