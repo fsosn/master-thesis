@@ -1,1 +1,62 @@
 \section{Inżynieria aktywacji jako metoda obrony}
+\subsection{Podstawy teoretyczne inżynierii aktywacji}
+Istotny obszar metod obrony stosowanych na poziomie samego modelu stanowi inżynieria aktywacji (ang. activation engineering), określana również jako inżynieria reprezentacji (ang. representation engineering).
+Metoda ta nie uwzględnia dodatkowego trenowania ani dostrajania modelu, natomiast wymagany jest dostęp do jego parametrów wewnętrznych. Wynika to z faktu, że podejście to zakłada bezpośrednią modyfikację stanów ukrytych modelu w trakcie inferencji, by kontrolować jego odpowiedzi~\cite{turner2024steeringlanguagemodelsactivation}.
+Inżynieria reprezentacji oparta jest na podejściu odgórnym, w którym monitoruje się zjawiska na wyższym poziomie, a nie skupia się na działaniu mniejszych elementów ogółu~\cite{zou2025representationengineeringtopdownapproach}.
+Techniki inżynierii aktywacji bazują na hipotezie liniowej reprezentacji, według której pojęcia wysokopoziomowe, takie jak między innymi emocje, szczerość czy toksyczność, są reprezentowane w przestrzeni aktywacji modelu językowego jako kierunki liniowe~\cite{turner2024steeringlanguagemodelsactivation}.
+Na tej podstawie Turner i in. przedstawili rozwiązanie, przy użyciu którego sterowano modelem poprzez dodanie wektora do aktywacji i kontrolowano sentyment oraz redukowano toksyczność odpowiedzi~\cite{turner2024steeringlanguagemodelsactivation}.
+Ponadto, Zou i in. wprowadzili wektory odczytujące do identyfikacji oraz wektory kontrolujące do sterowania modelu wobec wysokopoziomowych konceptów~\cite{zou2025representationengineeringtopdownapproach}.
+Natomiast Arditi i in. ustalili, że zachowanie odmowy w modelach powiązane jest z pojedynczym kierunkiem~\cite{arditi2024refusallanguagemodelsmediated}.
+
+\subsection{Generowanie wektora i sterowanie modelem}
+W celu wygenerowania wektora sterującego, w metodzie ActAdd wyznaczano go przed inferencją poprzez obliczenie różnicy aktywacji na danej warstwie dla pary przeciwstawnie nacechowanych promptów (np. ,,miłość'' i ,,nienawiść'')~\cite{turner2024steeringlanguagemodelsactivation}. Tak uzyskany wektor następnie aplikowano w czasie wnioskowania dla przetwarzanego polecenia.
+Podejście to zostało rozwinięte w technice \gls{CAA}, w której zamiast dwóch kontrastujących promptów wykorzystano zbiór takich par, co pozwoliło na zredukowanie szumu w wektorze sterującym~\cite{panickssery2024steeringllama2contrastive}. Metoda ta wykorzystuje zestaw pytań zamkniętych jednokrotnego wyboru z dwoma różnymi dostępnymi odpowiedziami. Zapytanie $p$ pozostaje takie samo dla pary, a odpowiedź może reprezentować pożądane zachowanie $c_p$ oraz niepożądane $c_n$. By wyznaczyć nieznormalizowany wektor sterujący $v'_L$ dla wybranej warstwy $L$, należy obliczyć średnią różnicę aktywacji na pozycji tokenu odpowiedzi na pytania ze zbioru $D$ złożonego z trójek ($p$, $c_p$, $c_n$), zgodnie ze wzorem:
+\begin{equation}
+    v'_L = \frac{1}{|D|} \sum_{(p, c_p, c_n) \in D} (a_L(p, c_p) - a_L(p, c_n))
+\end{equation}
+gdzie $a_L(\cdot)$ oznacza aktywację na warstwie $L$ zarejestrowany dla określonego zapytania i wybranej odpowiedzi~\cite{panickssery2024steeringllama2contrastive}.
+Ważnym krokiem jest odpowiedni wybór warstwy $L$. W badanich wykazano, że reprezentacje abstrakcyjnych pojęć czy zachowań, takich jak odmowa odpowiedz, koncentrują się w warstwach środkowych~\cite{zou2025representationengineeringtopdownapproach, panickssery2024steeringllama2contrastive}.
+
+Podobną koncepcję zastosowano w metodzie InferAligner~\cite{wang2024inferalignerinferencetimealignmentharmlessness}, gdzie również użyto różnicy średnich. Zbiór w tamtym podejściu jest złożony nie z pytań zamkniętych, a dowolnie dobranych par składających się z promptu szkodliwego i bezpiecznego. Może to wprowadzić szum do wektora, osłabić proces sterowania oraz wpłynąć na model w sposób nieoczekiwany.
+
+Wektor $v'_L$ jest poddany normalizacji:
+\begin{equation}
+    v_L = \frac{v'_L}{\|v'_L\|}
+\end{equation}
+Znormalizowany wektor $v_L$ jest następnie dodawany do aktywacji wybranej warstwy na pozycji każdego kolejnego tokenu występującego po prompcie~\cite{panickssery2024steeringllama2contrastive}:
+\begin{equation}
+    x'_L = x_L + \alpha \cdot v_L
+\end{equation}
+gdzie $x'_L$ i $x_L$ oznaczają odpowiednio zmodyfikowaną i oryginalną aktywację na warstwie $L$, a $\alpha$ to współczynnik siły sterowania.
+
+Wektor sterujący może mieć różne źródło. Jednym z nich jest wariant sterowania własnego, w którym wektor wyznaczany jest z modelu docelowego~\cite{panickssery2024steeringllama2contrastive, turner2024steeringlanguagemodelsactivation}. Występuje również opcja sterowania międzymodelowego, w której wektor otrzymuje się z innego modelu i następnie jest wstrzyknięty do modelu docelowego~\cite{wang2024inferalignerinferencetimealignmentharmlessness, huang2025crossmodeltransferabilitylargelanguage}.
+
+\subsection{Zapobieganie atakom za pomocą inżynierii aktywacji}
+Bezpośrednie ataki promptowe mają na celu ominięcie wbudowanych zabezpieczeń poprzez ominięcie mechanizmu odmowy i nakłonienie do wygenerowania szkodliwej treści. Inżynieria aktywacji stanowi narzędzie obrony, które wpływa bezpośrednio na ten mechanizm.
+W metodzie CAA sterowanie odbywa się jednak niezależnie od treści wejściowego polecenia użytkownika. Oznacza to, że każda odpowiedź modelu od początku może dążyć do niezgody, jeśli użyto by wektora ukierunkowanego na odmowę. W takim przypadku model może sprzeciwić się wykonaniu całkowicie bezpiecznego polecenia, co prowadzi do nadmiernej odmowy.
+W kontekście obrony modelu przed atakami, problem ten rozwiązuje InferAligner~\cite{wang2024inferalignerinferencetimealignmentharmlessness}.
+
+Metoda ta zakłada dynamiczne sterowanie modelem podczas inferencji.
+Stosowane jest w niej sterowanie międzymodelowe. Wykorzystywane są wektory pozyskane z innego modelu dostrojonego pod kątem bezpieczeństwa, by móc sterować mniej bezpieczny model docelowy.
+Technika ta opiera się na sterowaniu warunkowym. Aplikowanie wektora sterującego jest aktywowane po wykryciu szkodliwej intencji zapytania. Jest ona określana na bazie aktywacji ostatniego tokena promptu wejściowego i jego podobieństwa do uzyskanego na podstawie kontrastujących par zapytań wektora z modelu docelowego, czyli wektora sterującym bezpieczeństwem~\cite{wang2024inferalignerinferencetimealignmentharmlessness}.
+Warunkowość zapewniona jest przy użyciu bramki $g_L$ na warstwie $L$ opisanej wzorem:
+\begin{equation}
+    g_L = \begin{cases}
+        1 & \text{jeśli } a_L(P)^T s_L + b_L > 0 \\
+        0 & \text{w przeciwnym wypadku}
+    \end{cases}
+\end{equation}
+gdzie $a_L(P)$ oznacza wektor aktywacji zarejestrowany dla ostatniego tokenu promptu wejściowego $P$ na warstwie $L$, $s_L$ jest wyznaczonym w modelu docelowym wektorem sterującym bezpieczeństwem, a $b_L$ stanowi hiperparametr obciążenia.
+Wtedy zmodyfikowaną aktywację $x'_L$ można zapisać jako:
+\begin{equation}
+    x'_L = x_L + \alpha \cdot g_L \cdot \theta_L
+\end{equation}
+gdzie $x_L$ oznacza oryginalną aktywację na warstwie $L$, $\alpha$~to współczynnik siły sterowania, $g_L$ to bramka sterująca, a $\theta_L$ to wektor sterujący z warstwy $L$ modelu dostrojonego pod kątem bezpieczeństwa, również uzyskany na bazie przeciwstawnych par zapytań~\cite{wang2024inferalignerinferencetimealignmentharmlessness}.
+
+W eksperymentach przedstawionych w badaniu na modelach dostrojonych domenowo, InferAligner zredukował do blisko 0\% powodzenie ataków typu jailbreak oraz dla szkodliwych instrukcji, zachowując przy tym prawie niezmienną dokładność przy sprawdzeniu użyteczności modelu~\cite{wang2024inferalignerinferencetimealignmentharmlessness}.
+
+\subsection{Ograniczenia metody}
+Metoda obrony przy użyciu inżynierii aktywacji niesie ze sobą pewne ograniczenia. Wymaga ona pełnego dostępu do parametrów modelu, by móc bezpośrednio modyfikować stany ukryte modelu, a co za tym idzie, nie można jej wdrożyć dla zamkniętoźródłowych modeli komercyjnych dostępnych za pośrednictem API. Przy użyciu wyłącznie metody CAA, wstrzyknięty wektor odmowy może obniżyć powodzenie ataków, lecz jednocześnie może prowadzić do zjawiska nadmiernej odmowy modelu i pogorszyć wyniki użyteczności. Natomiast metoda InferAligner wyznacza wektory sterowania poprzez analizę różnic w promptach o przeciwstawnej intencji, co może nieść ryzyko wprowadzenia szumu do wektora i wpłynąć na zachowanie modelu w nieoczekiwany sposób.
+Dodatkowo, pełne odwzorowanie wariantu sterowania międzymodelowego z InferAligner wymagałoby modelu docelowego o świadomie osłabionym poziomie bezpieczeństwa, co wiązałoby się z dodatkowym nakładem obliczeniowym wykraczającym poza przyjęty zakres pracy.
+
+W części praktycznej niniejszej pracy zdecydowano się na zastosowanie inżynierii aktywacji w wariancie sterowania własnego. Wykorzystano mechanizm bramki sterującej oraz technikę CAA do wyznaczenia i wstrzyknięcia wektora odmowy w obrębie tego samego modelu. Podejście to poddano znanym atakom na modele językowe i porównano z innymi metodami obrony.
