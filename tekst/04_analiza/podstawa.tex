@@ -1,1 +1,57 @@
 \section{Skuteczność ataków bez zastosowania metod mitygacji}
+Pierwszym etapem eksperymentów było sprawdzenie skuteczności ataków bez zastosowania metod mitygacji, co stanowiło punkt odniesienia do dalszych badań. Na początku modelowi wprost przekazywano polecenia o szkodliwej intencji, bez zastosowania wyspecjalizowanego ataku. Rezultat widoczny jest w tabeli~\ref{tab:baseline_direct_prompts}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c|c}
+        Model                    & ASR [\%] & Nadmierna odmowa [\%] \\\hline
+        Llama-3.1-8B-Instruct    &          &                       \\\hline
+        Mistral-7B-Instruct-v0.3 &          &
+    \end{tabular}
+    \caption{\label{tab:baseline_direct_prompts}Skuteczność ataku przy bezpośrednim użyciu poleceń o szkodliwej intencji oraz poziom nadmiernej odmowy dla badanych modeli}
+\end{table}
+
+W następnej kolejności przeprowadzono atak DAN. Skuteczność ataku przy jej użyciu w określonym modelu została przedstawiona w tabeli~\ref{tab:dan_tab}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c}
+        Model                    & ASR [\%] \\\hline
+        Llama-3.1-8B-Instruct    &          \\\hline
+        Mistral-7B-Instruct-v0.3 &
+    \end{tabular}
+    \caption{\label{tab:dan_tab}Skuteczność ataku DAN dla badanych modeli}
+\end{table}
+
+Następnie przeprowadzono atak GCG. Trwał on znacznie dłużej oraz wykorzystywał więcej zasobów obliczeniowych niż inne metody. Rezultaty powodzenia tego ataku zaprezentowane zostały w tabeli~\ref{tab:gcg_tab}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c}
+        Model                    & ASR [\%] \\\hline
+        Llama-3.1-8B-Instruct    &          \\\hline
+        Mistral-7B-Instruct-v0.3 &
+    \end{tabular}
+    \caption{\label{tab:gcg_tab}Skuteczność ataku GCG dla badanych modeli}
+\end{table}
+
+Odporność wbudowanych mechanizmów obronnych zbadano także przy użyciu ataku PAIR. Wyniki uzyskane przy takim podejściu przedstawiono w tabeli~\ref{tab:pair_tab}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c}
+        Model                    & ASR [\%] \\\hline
+        Llama-3.1-8B-Instruct    &          \\\hline
+        Mistral-7B-Instruct-v0.3 &
+    \end{tabular}
+    \caption{\label{tab:pair_tab}Skuteczność ataku PAIR dla badanych modeli}
+\end{table}
+
+Poziom skuteczności metod ataku zestawiono w tabeli~\ref{tab:comparison_tab}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c|c|c|c}
+        \hline
+        \multirow{2}{*}{Model}   & \multicolumn{4}{c}{ASR [\%]}                    \\\cline{2-5}
+                                 & Bez ataku                    & DAN & GCG & PAIR \\\hline
+        Llama-3.1-8B-Instruct    &                              &     &     &      \\\hline
+        Mistral-7B-Instruct-v0.3 &                              &     &     &      \\\hline
+    \end{tabular}
+    \caption{\label{tab:comparison_tab}Skuteczność badanych metod ataku bez zastosowania mechanizmów obronnych}
+\end{table}

@@ -1,1 +1,7 @@
-\section{Wybrane modele językowe}
+\section{Modele językowe}
+W części eksperymentalnej wykorzystano modele Llama-3.1-8B-Instruct~\cite{grattafiori2024llama3herdmodels} oraz Mistral-7B-Instruct-v0.3~\cite{jiang2023mistral7b}. Są to modele otwartoźródłowe z upublicznionymi paramaterami wewnętrznymi. Było to ważne kryterium ze względu na konieczność dostępu do tych informacji przy okazji implementacji metody obrony opartej na inżynierii aktywacji, a także wymagane były przy białoskrzynkowym ataku GCG.
+Zostały one dostrojone podążać za poleceniami użytkownika i odpowiadać na zadane pytania, czego najczęstszym celem są niebezpieczne prompty.
+W literaturze do badań często wybierano właśnie modele dostarczane przez firmę Meta, lecz z rodziny Llama~2. W tej pracy uznano, że wybrana rodzina tych modeli stanowi bardziej adekwatny punkt odniesienia dla współczesnej rzeczywistości badań nad bezpieczeństwem LLM.
+Wybranie w badaniu również modelu Mistral pozwoliło zminimalizować ryzyko sformułowania błędnych wniosków na temat skuteczności metod obrony lub ataku, które wynikać by mogły ze specyfiki pojedynczego modelu lub jego zbioru uczącego.
+Pozwoliło to sprawdzić, czy badana podatność jest również obecna w innym modelu oraz umożliwiło ocenę stosowalności metody obrony niezależnie od dostawcy danego LLM. Ponadto, mają one podobną liczbę parametrów, mianowicie 8 i 7 miliardów, co umożliwiło porównanie rezultatów na tej samej maszynie.
+Wybór modeli o takim rozmiarze miał również znaczenie przy selekcji ze względu na dostępne zasoby obliczeniowe.
