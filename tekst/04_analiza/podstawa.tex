@@ -9,7 +9,7 @@ Pierwszym etapem eksperymentów było sprawdzenie skuteczności ataków (\gls{AS
     \end{tabular}
     \caption{\label{tab:baseline_direct_prompts}Skuteczność ataku przy bezpośrednim użyciu poleceń o szkodliwej intencji oraz poziom nadmiernej odmowy dla badanych modeli}
 \end{table}
-Zauważyć można, że model~Llama-3.1-8B-Instruct cechuje się znacznie silniejszymi wbudowanymi mechanizmami obronnymi. O skuteczności metod obrony stosowanych na etapie trenowania modelu świadczy niski poziom \gls{ASR} dla bezpośrednich zapytań, mianowicie zaledwie 6\%. Natomiast model Mistral-7B-Instruct-v0.3 był bardzo podatny na tego typu zapytania, co potwierdza otrzymany wskaźnik powodzenia ataku na poziomie 49\%. Świadczy to o gorszej jakości wbudowanych mechanizmów bezpieczeństwa i słabszym nacisku na dostrajanie pod kątem ochrony. Dostrzec można także, że rygorystyczne zabezpieczenia modelu Llama wiążą się z wyższym poziomem \gls{ORR}. Na co dziesiąte bezpieczne polecenie model odmówił jego wykonania, być może przez słowa kluczowe powiązane ze szkodliwą tematyką. Natomiast model Mistral wykazał mniej nadmierną odmowę na bezpieczne zapytania, ponieważ zaledwie na tylko 2 zapytania nie uzyskano odpowiedzi. Może być to powiązane z mniej rygorystycznym treningiem pod kątem bezpieczeństwa, ponieważ kosztem niskiego wskaźnika \gls{ORR} była odpowiedź na blisko połowę pytań niebezpiecznych.
+Zauważyć można, że model~Llama-3.1-8B-Instruct cechuje się znacznie silniejszymi wbudowanymi mechanizmami obronnymi. O skuteczności metod obrony stosowanych na etapie trenowania modelu świadczy niski poziom \gls{ASR} dla bezpośrednich zapytań, mianowicie zaledwie 6\%. Natomiast model Mistral-7B-Instruct-v0.3 był bardzo podatny na tego typu zapytania, co potwierdza otrzymany wskaźnik powodzenia ataku na poziomie 49\%. Jest to ponad 8 razy większa wartość niż w przypadku modelu Llama-. Świadczy to o gorszej jakości wbudowanych mechanizmów bezpieczeństwa i słabszym nacisku na dostrajanie pod kątem ochrony. Dostrzec można także, że rygorystyczne zabezpieczenia modelu Llama wiążą się z wyższym poziomem \gls{ORR}. Na co dziesiąte bezpieczne polecenie model odmówił jego wykonania, być może przez słowa kluczowe powiązane ze szkodliwą tematyką. Natomiast model Mistral wykazał mniej nadmierną odmowę na bezpieczne zapytania, ponieważ zaledwie na tylko 2 zapytania nie uzyskano odpowiedzi. Może być to powiązane z mniej rygorystycznym treningiem pod kątem bezpieczeństwa, ponieważ kosztem niskiego wskaźnika \gls{ORR} była odpowiedź na blisko połowę pytań niebezpiecznych.
 
 W następnej kolejności przeprowadzono atak DAN. Skuteczność ataku przy jej użyciu została przedstawiona w tabeli~\ref{tab:dan_tab}.
 \begin{table}[!ht]
@@ -35,18 +35,19 @@ Następnie zbadano odporność modeli na atak \gls{GCG}. Przeprowadzenie ataku t
 \end{table}
 Model Llama-3.1-8B-Instruct okazał się być w małym stopniu podatny na optymalizację gradientową, ponieważ uzyskano wynik o jednie 7 punktów procentowych wyższy niż przy bezpośrednich poleceniach szkodliwych. Świadczy to o wzmocnieniu odporności na nietypowe ciągi tokenów w sufiksie zapytania w stosunku do poprzednich wersji modelu. Model Mistral-7B-Instruct-v0.3 odpowiedział na 58 niebezpiecznych pytań, czyli o 9 więcej niż w przypadku bezpośrednich zapytań. Dla obu modeli odnotowano podobny wzrost \gls{ASR} w stosunku do wyników przedstawionych w tabeli~\ref{tab:baseline_direct_prompts}.
 
-Odporność wbudowanych mechanizmów obronnych zbadano także przy użyciu ataku \gls{PAIR}. Wyniki przedstawiono w tabeli~\ref{tab:pair_tab}.
+Odporność wbudowanych mechanizmów obronnych zbadano w następnej kolejności przy pomocy ataku \gls{PAIR}. Wyniki przedstawiono w tabeli~\ref{tab:pair_tab}.
 \begin{table}[!ht]
     \centering
     \begin{tabular}{l|c}
         Model                    & ASR [\%] \\\hline
         Llama-3.1-8B-Instruct    & 52       \\\hline
-        Mistral-7B-Instruct-v0.3 &
+        Mistral-7B-Instruct-v0.3 & 100
     \end{tabular}
     \caption{\label{tab:pair_tab}Skuteczność ataku PAIR dla badanych modeli}
 \end{table}
+Zauważyć można wysoką skuteczność tego ataku. Model Mistral-7B-Instruct-v0.3 zwrócił szkodliwą odpowiedź dla każdego testowanego przypadku. Z kolei model Llama-3.1-8B-Instruct był niemal dwukrotnie bardziej od niego odporny, lecz otrzymany \gls{ASR} wciąż był na bardzo wysokim poziomie, ponieważ aż 52\%. Dowodzi to, że oba modele są podstawowo podatne na ten atak automatyczny i wbudowane zabezpieczenia nie są wystarczające do ochrony przed dynamicznie dostosowywanymi poleceniami wejściowymi przez inny model atakujący.
 
-Poziom skuteczności metod ataku zestawiono w tabeli~\ref{tab:comparison_tab}.
+Poziom skuteczności badanych metod ataku zestawiono w tabeli~\ref{tab:comparison_tab}.
 \begin{table}[!ht]
     \centering
     \begin{tabular}{l|c|c|c|c}
@@ -54,7 +55,33 @@ Poziom skuteczności metod ataku zestawiono w tabeli~\ref{tab:comparison_tab}.
         \multirow{2}{*}{Model}   & \multicolumn{4}{c}{ASR [\%]}                    \\\cline{2-5}
                                  & Podstawowo                   & DAN & GCG & PAIR \\\hline
         Llama-3.1-8B-Instruct    & 6                            & 55  & 13  & 52   \\\hline
-        Mistral-7B-Instruct-v0.3 & 49                           & 96  & 58  &      \\\hline
+        Mistral-7B-Instruct-v0.3 & 49                           & 96  & 58  & 100  \\\hline
     \end{tabular}
     \caption{\label{tab:comparison_tab}Skuteczność badanych metod ataku bez zastosowania mechanizmów obronnych}
 \end{table}
+Najwyższą skuteczność ataku na model Llama-3.1-8B-Instruct otrzymano przy użyciu metody DAN i wyniosła ona 55\%. Podobne \gls{ASR} otrzymano przeprowadzając atak \gls{PAIR}, ponieważ rezultat różnił się jedyne 3 punkty procentowe. Znacznie gorzej wypadł na tle innych atak GCG, który przełamał wbudowaną ochronę tylko w 13 przypadkach, czyli o odpowiednio 42 i 39 mniej niż przy użyciu \gls{DAN} oraz \gls{PAIR}. Nieduży wzrost poziomu \gls{ASR} dla ataku GCG odnotowano również w przypadku modelu Mistral-7B-Instruct-v0.3. Natomiast najskuteczniejszym wobec niego atakiem była metoda \gls{PAIR}, która osiągnęła maksymalny wynik. Można dojść do wniosku, że metody oparte na dostosowywaniu promptów są najskuteczniejszymi metodami naruszania wbudowanych zabezpieczeń modelu. Osiągnęły znacznie lepszy rezultat niż atak optymalizujący sufiksy dodawane do poleceń wejściowych. Można również dojść do wniosku, że oba modele wymagają dodatkowych mechanizmów obronnych, by zmniejszyć potencjalne powodzenie ataków.
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                ybar,
+                ymin=0, ymax=115,
+                ylabel={ASR [\%]},
+                symbolic x coords={Podstawowo, DAN, GCG, PAIR},
+                xtick=data,
+                nodes near coords,
+                nodes near coords style={font=\footnotesize},
+                legend style={at={(0.5,1.15)}, anchor=north, legend columns=-1},
+                ymajorgrids=true,
+                grid style=dashed,
+                width=0.85\textwidth,
+                height=6.5cm
+            ]
+            \addplot[fill=blue!70!black] coordinates {(Podstawowo,6) (DAN,55) (GCG,13) (PAIR,52)};
+            \addplot[fill=red!70!black] coordinates {(Podstawowo,49) (DAN,96) (GCG,58) (PAIR,100)};
+            \legend{Llama-3.1-8B-Instruct, Mistral-7B-Instruct-v0.3}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Skuteczność badanych metod ataku bez zastosowania dodatkowych mechanizmów obronnych}
+    \label{fig:asr_comparison}
+\end{figure}

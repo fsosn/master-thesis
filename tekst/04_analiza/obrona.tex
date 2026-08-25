@@ -1,1 +1,41 @@
 \section{Skuteczność metod obrony}
+W kolejnym etapie badano skuteczność metod obrony, których celem było zminimalizowanie poziomu \gls{ASR} otrzymanego dla ataków na wybrane modele bez dodatkowej ochrony. Pierwszym badanym podejściem była technika Self-Reminder. Otrzymane wyniki przedstawiono w tabeli~\ref{tab:self_reminder_comparison_tab}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c|c|c|c}
+        \hline
+        \multirow{2}{*}{Model + metoda obrony}   & \multicolumn{4}{c}{ASR [\%]}                    \\\cline{2-5}
+                                                 & Podstawowo                   & DAN & GCG & PAIR \\\hline
+        Llama-3.1-8B-Instruct + Self-Reminder    & 3                            & 43  & 1   & 34   \\\hline
+        Mistral-7B-Instruct-v0.3 + Self-Reminder & 7                            & 76  & 17  & 97   \\\hline
+    \end{tabular}
+    \caption{\label{tab:self_reminder_comparison_tab}Skuteczność badanych metod ataku z zastosowaniem metody obrony Self-Reminder}
+\end{table}
+Zauważyć można, że po zastosowaniu tej ochrony, poziom \gls{ASR} spadł dla każdego z badanych ataków. Szczególnie wyróżnić można spadek tego wskaźnika z poziomu 49\% do zaledwie 7\% w przypadku modelu Mistral-7B-Instruct-v0.3 dla bezpośrednich szkodliwych poleceń. Wyraźnie zredukowano również skuteczność ataku \gls{GCG} dla obu modeli, dla Llama-3.1-8B-Instruct udało się zablokować ten atak niemal w całości. Natomiast pomimo zastosowania tego podejścia do obrony, oba modele wykazują sporą podatność na ataki \gls{DAN} oraz \gls{PAIR}. W przypadku Mistral, metoda \gls{PAIR} omija zabezpieczenia w aż 97\% przypadków, a \gls{DAN} w 76\%. Niewystarczająco duży spadek skuteczności tych ataków można zaobserwować również dla modelu Llama. Wywnioskować można, że technika Self-Reminder pozwala zadowalająco obronić \gls{LLM} przed bezpośrednimi niebezpiecznymi zapytaniami, natomiast nie jest wystarczającą ochroną przed iteracyjnymi metodami omijania zabezpieczeń oraz podejściami opartymi na inżynierii promptów. Do zapobiegania takim atakom wymagane są bardziej skuteczne metody obrony.
+
+Sprawdzono w następnym kroku skuteczność obrony przy użyciu zewnętrznego modelu moderacyjnego Llama-Guard-3-8B. Rezultaty zaprezentowano w tabeli~\ref{tab:guard_comparison_tab}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c|c|c|c}
+        \hline
+        \multirow{2}{*}{Model + metoda obrony} & \multicolumn{4}{c}{ASR [\%]}                    \\\cline{2-5}
+                                               & Podstawowo                   & DAN & GCG & PAIR \\\hline
+        Llama-3.1-8B-Instruct + Llama-Guard    & 1                            & 0   & 0   & 29   \\\hline
+        Mistral-7B-Instruct-v0.3 + Llama-Guard & 1                            & 1   & 1   & 53   \\\hline
+    \end{tabular}
+    \caption{\label{tab:guard_comparison_tab}Skuteczność badanych metod ataku na modele chronione przez Llama Guard}
+\end{table}
+Zastosowanie zewnętrznego modelu zapewniło wysoki poziom bezpieczeństwa. Dla bezpośrednich poleceń, \gls{DAN} oraz \gls{GCG} udało się zredukować poziom skuteczności ataków do blisko 0\%. W przypadku tego rozwiązania, osięgnięto zbliżony poziom ochrony przed tymi atakami dla obu modeli. Niezależnie od tego czy modelem docelowym był Llama czy Mistral, sukces ominięcia zabezpieczeń spadł do poziomu od 0 do 1\%. Zauważyć natomiast można, że atak \gls{PAIR} nadal jest wysoce skuteczny i potrafi ominąć zabezpieczenia modelu docelowego oraz moderacyjnego. Technika \gls{PAIR} dla modelu Llama-3.1-8B-Instruct bronionym przez Llama-Guard-3-8B osiągnęła poziom \gls{ASR} wynoszący 29\%, natomiast w analogicznym scenariuszu dla modelu Mistral-7B-Instruct-v0.3 otrzymano \gls{ASR} równe 53\%. Pokazuje to, że automatyczne i iteracyjne dostosowywanie poleceń wejściowych może skutecznie omijać modele chronione przez dedykowane modele moderacyjne.
+
+Finalnie zbadano skuteczność ataków na modele z zastosowanym mechanizmem obronnym opartym na inżynierii aktywacji. Wyniki zestawiono w tabeli~\ref{tab:act_comparison_tab}.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|c|c|c|c}
+        \hline
+        \multirow{2}{*}{Model + metoda obrony}            & \multicolumn{4}{c}{ASR [\%]}                    \\\cline{2-5}
+                                                          & Podstawowo                   & DAN & GCG & PAIR \\\hline
+        Llama-3.1-8B-Instruct + sterowanie aktywacjami    &                              &     &     &      \\\hline
+        Mistral-7B-Instruct-v0.3 + sterowanie aktywacjami &                              &     &     &      \\\hline
+    \end{tabular}
+    \caption{\label{tab:act_comparison_tab}Skuteczność badanych metod ataku na modele chronione mechanizmem opartym na inżynierii aktywacji}
+\end{table}

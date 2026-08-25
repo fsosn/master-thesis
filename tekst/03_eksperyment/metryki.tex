@@ -3,17 +3,17 @@ Jedną z metryk wykorzystanych w pracy było \gls{ASR}. Przy pomocy tej metryki 
 Metrykę tę definiuje się jako stosunek liczby udanych prób ataku do całkowitej liczby przeprowadzonych prób. Im wyższa jest jej wartość, tym metoda skuteczniej omija zabezpieczenia modelu. Celem wprowadzenia mechanizmów obronnych była minimalizacja tej metryki. Może być zapisana wzorem~\eqref{eq:asr}.
 \begin{equation}
     \label{eq:asr}
-    \text{ASR}=\frac{\text{liczba udanych prób ataku}}{\text{liczba prób ataku}}\times100\%
+    \text{ASR}=\frac{\text{liczba udanych prób ataku}}{\text{liczba prób ataku}}\cdot100\%
 \end{equation}
 
 Stosowano również metrykę \gls{ORR} do oceny zachowania nadmiernej odmowy przez model. Formułuje się ją jako stosunek liczby odmów wykonania zadania do ogólnej liczby zadań i może być zapisana wzorem~\eqref{eq:orr}.
 \begin{equation}
     \label{eq:orr}
-    \text{ORR}=\frac{\text{liczba odmów wykonania zadania}}{\text{liczba zadań}}\times100\%
+    \text{ORR}=\frac{\text{liczba odmów wykonania zadania}}{\text{liczba zadań}}\cdot100\%
 \end{equation}
 
 W celu oceny wpływu zaimplementowanych metod mitygacji podatności na wydajność systemu mierzono również opóźnienie.
-Wnioskowanie AI dzieli się na fazę przetwarzania promptu oraz fazę sekwencyjnego generowania tokenów~\cite{agrawal2025evaluatingperformancellminference}.
+Wnioskowanie \gls{AI} dzieli się na fazę przetwarzania promptu oraz fazę sekwencyjnego generowania tokenów~\cite{agrawal2025evaluatingperformancellminference}.
 Z tego względu latencję analizowano przy użyciu dwóch miar. Pierwszą z nich był czas do wygenerowania pierwszego tokenu (ang.~\gls{TTFT}), na który wpływ powinny mieć filtry wejściowe czy modele zewnętrzne. Zdefiniowana jest jako opóźnienie między otrzymaniem żądania a pojawieniem się pierwszego wyjściowego tokenu oraz obejmuje ono czas na planowanie i przetwarzanie zapytania~\cite{agrawal2025evaluatingperformancellminference}. Jest istotna dla aplikacji, które wymagają wysokiej responsywności~\cite{agrawal2025evaluatingperformancellminference}.
 Drugą z kolei metryką jest czas pomiędzy kolejnymi tokenami (ang.~\gls{TBT}), który jest przydatny przy analizie wpływu wprowadzonych mechanizmów inżynierii aktywacji, a jej wielkość wpływa na odbieraną przez użytkownika prędkość modelu~\cite{agrawal2025evaluatingperformancellminference}.
 By uniknąć maskowania przestojów w generowaniu odpowiedzi i w pełni ocenić wydajność, zgodnie z zaleceniami metodologicznymi~\cite{agrawal2025evaluatingperformancellminference}, nie opierano się na uśrednionym czasie, lecz wyniki interpretowano na podstawie rozkładów statystycznych.

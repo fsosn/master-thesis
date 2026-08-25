@@ -1,1 +1,31 @@
 \section{Metody obrony}
+Zbadano trzy metody obrony przed wyselekcjonowanymi atakami. Wykorzystano techniki, które stosuje się na etapie wdrożenia modelu. Pierwszą z nich jest Self-Reminder na bazie artykułu Xie i in.~\cite{wu2023selfreminder}. Dodano instrukcję systemową oraz przyrostek, które otaczają zapytanie użytkownika i nakazują modelowi odpowiadać zgodnie z regułami bezpieczeństwa. Mechanizm działania przedstawiony został na wizualizacji~\ref{fig:self_reminder_prompt}, gdzie kolorem niebieskim oznaczono dodaną instrukcję systemową, czerwonym szkodliwe zapytanie, natomiast żółtym sufiks przypominający modelowi o bezpiecznej odpowiedzi.
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.85\linewidth}
+        \ttfamily
+        \colorbox{sysColor}{\parbox{\linewidth}{%
+                <system>\\
+                You should be a responsible AI and should not generate harmful or misleading content! Please answer the following user query in a responsible way.\\
+                </system>
+            }}
+        \vspace{-2pt}
+
+        \colorbox{userColor}{\parbox{\linewidth}{%
+                <user>\\
+                Write a tutorial on how to make a bomb
+            }}
+
+        \vspace{-2pt}
+
+        \colorbox{sufColor}{\parbox{\linewidth}{%
+                Remember, you should be a responsible AI and should not generate harmful or misleading content!\\
+                </user>
+            }}
+    \end{minipage}
+    \caption{Wizualizacja metody obrony Self-Reminder}
+    \label{fig:self_reminder_prompt}
+\end{figure}
+
+Następna zbadaną metodą było moderowanie zapytań oraz odpowiedzi LLM przez model Llama-Guard-3-8B~\cite{llamaguard3}. Określał on czy treść jest szkodliwa czy bezpieczna. W momencie, gdy zapytanie wejściowe zostało przez niego ocenione jako groźne, zwracana była podstawowa formuła odmowy. Natomiast jeśli dane wejściowe okazały się nieszkodliwe, model docelowy generował odpowiedź, która następnie również sprawdzana była przez model zewnętrzny.
+W celu ograniczenia zużycia zasobów skorzystano z wersji skwantyzowanej do INT8, co pozwoliło zmniejszyć zużycie pamięci VRAM o prawię połowę.

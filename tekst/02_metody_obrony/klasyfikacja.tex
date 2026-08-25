@@ -11,7 +11,7 @@ Metody omówione w tej sekcji nie będą rozpatrywane w części eksperymentalne
 Metody stosowane na etapie wdrożenia modelu obejmują natomiast mechanizmy mające na celu przeciwdziałanie atakom, które ominąć mogą zabezpieczenia wprowadzone podczas treningu~\cite{correia2026systematicliteraturereviewllm}.
 Ze względu na relatywnie niski koszt wdrożenia i brak konieczności trenowania modelu, metody należące do tej kategorii stanowią główny przedmiot analizy.
 
-W tym celu stosowane są między innymi strategie oparte na przygotowaniu promptu, na podstawie których ukierunkować można zachowanie modelu i określić jego ograniczenia przy użyciu instrukcji systemowej lub jawnie oddzielać instrukcję od danych użytkownika czy przypominać o zasadach po poleceniu użytkownika.
+W tym celu stosowane są między innymi strategie oparte na przygotowaniu promptu, na podstawie których ukierunkować można zachowanie modelu i określić jego ograniczenia. W tym celu stosuje się instrukcję systemową lub jawnie oddziela się instrukcję od danych użytkownika czy przypomina się o zasadach tuż po poleceniu użytkownika.
 Przykładem jest metoda Self-Reminder~\cite{wu2023selfreminder}, która oparta jest na dodaniu instrukcji przed i po poleceniu użytkownika, która przypomina modelowi, by odpowiadał zgodnie z zasadami bezpieczeństwa, co dla badanych przypadków obniżyło sukces ataków o około 48\%.
 
 Stosowane również są strategie, w których przekształcane jest zapytanie użytkownika. Po wykonanych zmianach jest ono następnie przekazywane do modelu docelowego~\cite{correia2026systematicliteraturereviewllm}.
