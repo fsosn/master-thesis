@@ -3,7 +3,7 @@ Głównym celem eksperymentu jest ocena skuteczności wybranych metod obrony du�
 Wybrano trzy podejścia do mitygacji tej podatności, które różnią się od siebie miejscem integracji z modelem.
 Jedną z nich jest metoda obrony przy użyciu inżynierii aktywacji, inspirowana badaniami Panickssery~i~in.~\cite{panickssery2024steeringllama2contrastive} oraz Wang~i~in.~\cite{wang2024inferalignerinferencetimealignmentharmlessness}.
 Następną sprawdzoną techniką jest obrona na poziomie promptu przy użyciu metody Self-Reminder~\cite{wu2023selfreminder}.
-Ostatnim wybranym mechanizmem jest filtrowanie zewnętrzne przy użyciu zewnętrznego modelu Llama-Guard~\cite{inan2023llamaguardllmbasedinputoutput} do analizy zapytań wejściowych oraz wyjściowych odpowiedzi.
+Ostatnim wybranym mechanizmem jest filtrowanie zewnętrzne przy użyciu modelu Llama-Guard~\cite{inan2023llamaguardllmbasedinputoutput} do analizy zapytań wejściowych oraz odpowiedzi wyjściowych.
 Skuteczność metod obrony poddano ocenie przy użyciu trzech odmiennych strategii ataku.
 Pierwszą z nich jest białoskrzynkowy atak GCG~\cite{zou2023universaltransferableadversarialattacks}, który oparty jest na gradientowej optymalizacji sufiksu tokenów dodawanych do szkodliwego promptu.
 Drugą jest czarnoskrzynkowy, automatyczny atak PAIR~\cite{chao2024jailbreakingblackboxlarge}, którego celem jest zautomatyzowane generowanie niebezpiecznych zapytań, wykorzystując do tego inne LLM.

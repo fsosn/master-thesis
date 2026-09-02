@@ -17,7 +17,11 @@ Podejście to zostało rozwinięte w technice \gls{CAA}, w której zamiast dwóc
 gdzie $a_L(\cdot)$ oznacza aktywację na warstwie $L$ zarejestrowany dla określonego zapytania i wybranej odpowiedzi~\cite{panickssery2024steeringllama2contrastive}.
 Ważnym krokiem jest odpowiedni wybór warstwy $L$. W badanich wykazano, że reprezentacje abstrakcyjnych pojęć czy zachowań, takich jak odmowa odpowiedz, koncentrują się w warstwach środkowych~\cite{zou2025representationengineeringtopdownapproach, panickssery2024steeringllama2contrastive}.
 
-Podobną koncepcję zastosowano w metodzie InferAligner~\cite{wang2024inferalignerinferencetimealignmentharmlessness}, gdzie również użyto różnicy średnich. Zbiór w tamtym podejściu jest złożony nie z pytań zamkniętych, a dowolnie dobranych par składających się z promptu szkodliwego i bezpiecznego. Może to wprowadzić szum do wektora, osłabić proces sterowania oraz wpłynąć na model w sposób nieoczekiwany.
+Podobną koncepcję zastosowano w metodzie InferAligner~\cite{wang2024inferalignerinferencetimealignmentharmlessness}, gdzie również użyto różnicy średnich. Zbiór w tamtym podejściu jest złożony nie z pytań zamkniętych, a dowolnie dobranych par składających się z promptu szkodliwego i bezpiecznego. Wektor $v'_L$ może być wtedy wyznaczony wzorem:
+\begin{equation}
+    v'_L = \frac{1}{|D|} \sum_{(p^-, p^+) \in D} a_L p^- - a_L p^+
+\end{equation}
+gdzie $D$ to zbiór zawierający zapytania szkodliwe $p^-$ i bezpieczne $p^+$ oraz $a_L(\cdot)$ oznacza aktywację na ostatnim tokenie na warstwie $L$ dla promptu $p$,
 
 Wektor $v'_L$ jest poddany normalizacji:
 \begin{equation}
@@ -45,8 +49,14 @@ Warunkowość zapewniona jest przy użyciu bramki $g_L$ na warstwie $L$ opisanej
         1 & \text{jeśli } a_L(P)^T s_L + b_L > 0 \\
         0 & \text{w przeciwnym wypadku}
     \end{cases}
+    \label{eq:gate}
 \end{equation}
-gdzie $a_L(P)$ oznacza wektor aktywacji zarejestrowany dla ostatniego tokenu promptu wejściowego $P$ na warstwie $L$, $s_L$ jest wyznaczonym w modelu docelowym wektorem sterującym bezpieczeństwem, a $b_L$ stanowi hiperparametr obciążenia.
+gdzie $a_L(P)$ oznacza wektor aktywacji zarejestrowany dla ostatniego tokenu promptu wejściowego $P$ na warstwie $L$, $s_L$ jest wyznaczonym w modelu docelowym wektorem sterującym bezpieczeństwem. Natomaist $b_L$ stanowi hiperparametr obciążenia określony wzorem:
+\begin{equation}
+    b_L = - \frac{1}{N} \sum_{i=1}^{N} (x_i^ \cdot s_L)
+    \label{eq:bias_eq}
+\end{equation}
+gdzie $N$ to liczba wszystkich próbek treningowych, $x_i$ to wektor aktywacji $i$-tej próbki na warstwie $L$.
 Wtedy zmodyfikowaną aktywację $x'_L$ można zapisać jako:
 \begin{equation}
     x'_L = x_L + \alpha \cdot g_L \cdot \theta_L
