@@ -1,2 +1,4 @@
-\section{Środowisko sprzętowe}
+\section{Środowisko sprzętowe oraz oprogramowanie}
 Przeprowadzenie eksperymentu wymagało wykorzystania dedykowanego środowiska sprzętowego. Zrealizowano go na maszynie wirtualnej wyposażonej w kartę graficzną NVIDIA A40 z 48 GB pamięci VRAM, procesor wirtualny z 16 vCPU, 32 GB pamięci operacyjnej RAM oraz system operacyjny Ubuntu 24.04.2 LTS.
+
+Podstawę stosu technologicznego stanowił język programowania Python w wersji 3.12.3. Użyto również framework PyTorch~\cite{paszke2019pytorchimperativestylehighperformance} do manipulacji tensorami czy wstrzykiwania wektorów w metodzie sterowania aktywacjami. Wykorzystano również dostarczaną przez platformę HuggingFace bibliotekę transformers~\cite{wolf2020huggingfacestransformersstateoftheartnatural}, która pozwoliła na wczytywanie modeli, tokenizację i szablonowanie konwersacji modelu. By zapewnić powtarzalność wyników stosowano inicjalizację stałego ziarna o wartości 42. Ponadto, w konfiguracji modeli stosowano dekodowanie zachłanne zamiast losowego próbkowania, co oznacza że model zawsze wybierał token o najwyższym prawdopodobieństwie.

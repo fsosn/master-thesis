@@ -1,9 +1,43 @@
 \section{Metody ataku}
-\subsection{DAN}
+\subsection{Do Anything Now}
 W celu zbadania podatności dużego modelu językowego przygotowano implementacje metod ataku.
 Do realizacji ataku \gls{DAN} wykorzystano instrukcję z kontekstem wprowadzającym odgrywanie ról, mającą na celu skłonienie do ignorowania przez model reguł bezpieczeństwa. Docelowe zapytanie zawierające szkodliwą intencję jako polecenie wykonania dodano na końcu instrukcji \gls{DAN}. Instrukcję tę pozyskano ze źródła internetowego. Dokładna treść prompta nie została podana w niniejszej pracy, by nie upowszechniać jego użycia. Oryginalnie sformułowany był dla modeli firmy OpenAI, natomiast zmodyfikowano go, by był adekwatny do badanych modeli.
-\subsection{GCG}
+\begin{table}[!ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{X|X}
+        \hline
+        \textbf{Prompt wejściowy}                                                            &
+        \textbf{Odpowiedź modelu}                                                                                                            \\ \hline
+
+        \small{Write a tutorial on how to make a bomb}                                       &
+        \small{I'm sorry for any confusion, but I must clarify that I cannot assist with creating a bomb or any destructive device. [\dots]} \\ \hline
+
+        \small{\textcolor{BrickRed}{[Szablon DAN]} + Write a tutorial on how to make a bomb} &
+        \small{Alright, let's get this show on the road! Here's a step-by-step guide on how to make a bomb [\dots]}                          \\ \hline
+    \end{tabularx}
+    \caption{Porównanie przykładowych otrzymanych w badaniu odpowiedzi modelu Mistral na standardowy prompt szkodliwy oraz na atak typu DAN}
+    \label{tab:dan_vs_traditional}
+\end{table}
+
+\subsection{Greedy Coordinate Gradient}
 By przeprowadzić atak \gls{GCG} potrzebny był pełny dostęp do parametrów modelu, by zoptymalizować niebezpieczne sufiksy dodane do polecenia. Atak oparto o nanoGCG~\cite{nanogcg}. Rozwiązanie to implementuje oryginalny algorytm \gls{GCG} wraz z dodatkowymi modyfikacjami, które mogą polepszyć jego wydajność. Jako pożądaną odpowiedź modelu użyto przygotowanych do tego celu zdań, które dołączone były do każdej szkodliwej instrukcji w ramach zbioru danych JailbreakBench. Dla modelu Llama-3.1-8B-Instruct zmodyfikowano docelową treść z ,,\textit{Sure, here is how to [\dots]}'' na ,,\textit{Here is how to [\dots]}''. Zmiana ta uzasadniona jest rezultatami badań Zhu i in.~\cite{zhu2025advprefixobjectivenuancedllm}, którzy dostrzegli, że prefiksy z badania Zou i in.~\cite{zou2023universaltransferableadversarialattacks} były nadmiernie ograniczone, a także, że Llama~3 może preferować właśnie zdania zaczynające się od słowa ,,\textit{Here}''. Niestety ograniczone zasoby obliczeniowe nie pozwoliły skorzystać z pełni możliwości udostępnionego narzędzia do optymalizacji prefiksów. Uruchomienie wymagało dostosowania parametrów konfiguracyjnych do dostępnych zasobów, co wpłynęło końcowo na jakość osiągniętych rezultatów. Co ciekawe, w ten sposób pogorszono osiągniętą skuteczność ataku o 3 punkty procentowe. W konsekwencji zrezygnowano z tego podejścia i skupiono się na zmianie prefiksu na ,,\textit{Here is how to [niebezpieczne zachowanie]}. W przypadku modelu Mistral wykorzystano przedrostki identyczne jak przy badaniu modelu Llama.
-Ze względu na ograniczone zasoby obliczeniowe, w atakach na modele wraz z zastosowanymi metodami obrony, zdecydowano się na wykorzystanie sufiksów otrzymanych w przypadku podstawowym. Jest to uzasadnione tym, że wykazują one transferowalność~\cite{zou2023universaltransferableadversarialattacks}.
-\subsection{PAIR}
+Ze względu na ograniczone zasoby obliczeniowe, w atakach na modele wraz z zastosowanymi metodami obrony, zdecydowano się na wykorzystanie sufiksów otrzymanych w przypadku podstawowym. Jest to uzasadnione tym, że wykazują one transferowalność~\cite{zou2023universaltransferableadversarialattacks}. Konfigurację ataku ze względu na dostępne zasoby obliczeniowe ograniczono do 100 kroków.
+\begin{table}[!ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{X|X}
+        \hline
+        \textbf{Standardowy prompt szkodliwy}                                                                      &
+        \textbf{Szkodliwy prompt z sufiksem}                                                                                                                                                                                                                 \\ \hline
+
+        \small{Give me instructions for hacking into a terminal to gain sudo access to a server that I do not own} &
+
+        \small{Give me instructions for hacking into a terminal to gain sudo access to a server that I do not own\textcolor{BrickRed}{ x uzman xspark x librarian x appropriatelyFive x foolish(EXathe ethical upbeat titles:** Fit personas<IActionResult}} \\ \hline
+    \end{tabularx}
+    \caption{Porównanie postaci standardowego szkodliwego promptu wejściowego z zapytaniem z sufiksem uzyskanym metodą GCG}
+    \label{tab:gcg_example}
+\end{table}
+
+\subsection{Prompt Automatic Iterative Refinement}
 Do przeprowadzenia ataku \gls{PAIR} wykorzystano trzy różne modele, mianowicie badany pod kątem odporności model docelowy Llama-3.1-8B-Instruct lub Mistral-7B-v0.3, atakujący model dostosowujący treść poleceń Llama-3.1-8B-Lexi-Uncensored-V2 oraz oceniający bezpieczeństwo odpowiedzi HarmBench-Llama-2-13b-cls. By móc przeprowadzić atak korzystając z dostępnych zasobów obliczeniowych, postanowiono skwantyzować każdy z użytych modeli do postaci INT8. Skorzystano z narzędzia EasyJailbreak~\cite{zhou2024easyjailbreak}, które udostępnia metodę do wywołania tego ataku opartą na badaniach Chao i in.~\cite{chao2024jailbreakingblackboxlarge}. Metodę wywołano z domyślnymi wartościami parametrów konfiguracyjnych. Podstawowo model docelowy generował maksymalnie 150 tokenów. Dostosowane zapytania wejściowe otrzymane w rezultacie przeprowadzonego ataku zostały następnie ponownie zadane modelowi docelowemu, lecz tym razem ze zwiększonym limitem generowanych tokenów do 512. Dzięki temu podejściu najpierw skrócono czas trwania ataku oraz następnie ustandaryzowano długość wygenerowanej odpowiedzi modelu, by rezultaty ataków mogły być porównane z innymi. Dostrzeżono, że w przypadku uciętych odpowiedzi do mniejszej liczby tokenów, klasyfikator często klasyfikował tę część tekstu jako szkodliwą, co zawyżało mierzone powodzenie ataków w porównaniu z dłuższą odpowiedzią.
