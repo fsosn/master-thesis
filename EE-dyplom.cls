@@ -571,6 +571,8 @@
 \ifnum\strcmp{\locallang}{PL} = 0
     \newcommand{\kieruneklocal}{na~kierunku }
     \newcommand{\specjalnosclocal}{w~specjalności }
+    \newcommand{\titlemainpage}{Analiza metod mitygacji podatności dużych modeli językowych\\
+        na bezpośrednie ataki promptowe }
     \newcommand{\titlelocal}{\@title }
     \newcommand{\albumlocal}{numer~albumu }
     \newcommand{\promotorlocal}{promotor}
@@ -612,7 +614,7 @@
         \vskip .5em
         \specjalnosclocal \@specjalnosc
         \vskip 3em
-        \large \titlelocal
+        \large \titlemainpage
         \vskip 3em
         \LARGE \@author \\
         \normalsize
@@ -650,15 +652,8 @@
         \textbf{Streszczenie}
     \end{center}
     \@streszczeniepracy
-
-    Rozwój dużych modeli językowych (LLM) przyczynił się do ich wdrożenia w skali masowej w systemach informatycznych. Modele te pozostają jednak podatne na bezpośrednie ataki promptowe, które mają na celu ominięcie wbudowanych mechanizmów bezpieczeństwa.
-    Celem pracy była analiza porównawcza i ewaluacja trzech odmiennych metod mitygacji podatności na ataki bezpośrednie. Była to technika Self-Reminder oparta na inżynierii promptów, rozwiązanie wykorzystujące zewnętrzny klasyfikator Llama-Guard oraz metoda bazująca na inżynierii aktywacji. Badania miały na celu wskazanie rozwiązania zapewniającego optymalny kompromis między skutecznością ochrony a narzutem obliczeniowym i zachowaniem użyteczności modelu.
-    Eksperymenty przeprowadzono na modelach Llama-3.1-8B-Instruct oraz Mistral-7B-Instruct-v0.3. Poddano je działaniu zróżnicowanych wektorów ataków takich jak DAN, GCG oraz PAIR. Skorzystano ze zbioru JBB-Behaviours zawierającego szkodliwe prompty. Metody mitygacji ewaluowano na podstawie wskaźników skuteczności ataków (ASR), nadmiernych odmów (ORR), testu MMLU mierzącego ogólne zdolności modelu, a także weryfikowano opóźnienia przy użyciu metryk TTFT i TBT.
-    Przeprowadzone badania pozwoliły określić stopień podatności badanych modeli na poszczególne rodzaje ataków oraz skuteczność wdrożonych mechanizmów obronnych. Uzyskane rezultaty wykazały, że metoda oparta na sterowaniu aktywacjami okazała się najkorzystniejszym z badanych rozwiązań dla modelu Llama, które zapewnia poziom bezpieczeństwa porównywalny do zewnętrznego modelu moderującego, ze znikomym narzutem pamięciowym, powodując nieznaczny wzrost opóźnienie i zachowując ogólne zdolności modelu. Jednocześnie metoda ta nie zapewniła wystarczającej ochrony dla modelu Mistral, wskazując na zależność jej skuteczności od charakterystyki modelu. Llama-Guard zapewnił wysoki poziom ochrony niezależnie od rodziny modelu, jednak wprowadził on istotne opóźnienia oraz dodatkowy narzut pamięciowy. Rezultaty uzyskane dla techniki Self-Reminder wskazały natomiast, że inżynieria promptów nie stanowi wystarczającej ochrony przed analizowanymi atakami.
-    Ostatecznie ustalono, że dobór mechanizmów obronnych nie ma charakteru uniwersalnego i powinien uwzględniać specyfikę infrastruktury, docelowe przeznaczenie oraz wymagania dotyczące bezpieczeństwa i wydajności.
-
     \vskip 2em
-    \noindent\textbf{Słowa kluczowe: sztuczna inteligencja, duże modele językowe, bezpieczeństwo modeli językowych, ataki promptowe, mitygacja podatności}
+    \noindent\textbf{Słowa kluczowe:}
     \@slowakluczowe
     \cleardoublepage
 }
@@ -673,15 +668,8 @@
         \textbf{Abstract}
     \end{center}
     \@thesisabstract
-
-    The development of large language models (LLM) has led to their widespread implementations across information technology systems. However, these models remain vulnerable to direct prompting attacks, which aim to bypass built-in security mechanism.
-    The aim of this thesis was to conduct a comparative analysis and evalution of three distinct methods for mitigating vulnerability to direct attacks. These were the Self-Reminder technique based on prompt engineering, a solution utilising the external Llama-Guard classifier, and a method based on activation engineering. The research aimed to identify a solution offering an optimal balance between safety, computational overhead and model's usability.
-    The experiments were conducted on the Llama-3.1-8B-Instruct and Mistral-7B-Instruct-v0.3 models. These were subjected to a variety of attack vectors, such as DAN, GCG and PAIR. The JBB-Behaviours dataset was utilised, which contained malicious prompts. Mitigation methods were evaluated based on attack success rates (ASR), over-rejection rates (ORR), and the MMLU test measuring the model's general capabilities, whilst latency was assessed using the TTFT and TBT metrics.
-    The research carried out made it possible to determine the vulnerability of the models under investigation to specific types of attacks, as well as the effectiveness of the defence mechanisms implemented. The results showed that the method based on activation steering proved to be the most advantageous of the solutions tested for the Llama model, providing a level of security comparable to that of an external moderating model, with negligible memory overhead, causing only a slight increase in latency and preserving the model's overall capabilities. At the same time, this method did not provide sufficient protection for the Mistral model, indicating that its effectiveness depends on the model's characteristics. Llama-Guard provided a high level of protection regardless of the model family. However, it introduced significant latency and additional memory overhead. The results obtained for the Self-Reminder technique, on the other hand, indicated that prompt engineering does not provide sufficient protection against the analysed attacks.
-    Ultimately, it was established that the selection of defence mechanisms is not universal and should take into account the specific nature of the infrastructure, its intended use, and security and performance requirements.
-
     \vskip 2em
-    \noindent\textbf{Keywords: artificial intelligence, large language models, LLM security, prompting attacks, vulnerability mitigation}
+    \noindent\textbf{Keywords:}
     \@thesiskeywords
     \cleardoublepage
 }
